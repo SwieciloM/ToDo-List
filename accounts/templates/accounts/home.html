@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block header_content %}
+<h3>Log in or register to start get acces to yours tasks</h3>
+{% endblock %}
+
+{% block main_content %}
+<td><a href="{% url 'login' %}">Login</a></td>
+<td><a href="">Register</a></td>
+{% endblock %}
