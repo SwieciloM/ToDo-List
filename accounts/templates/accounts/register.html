@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block header_content %}
-<h1>Login or register to start get acces to yours tasks</h1>
+<h1>Register</h1>
+<a href="{% url 'login' %}">Go back</a>
 {% endblock %}
 
 {% block main_content %}
 <form method="POST">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="Login">
+    <input type="submit" value="Register">
 </form>
-<td><a href="{% url 'register' %}">Register</a></td>
 {% endblock %}
