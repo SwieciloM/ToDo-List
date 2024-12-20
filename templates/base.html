@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base Document</title>
+    <title>ToDo List</title>
+    <style>
+        body {
+            background-color: aqua;
+        }
+    </style>
 </head>
+
 <body>
-    {% block header_content %}
+    <div class="container">
+        {% block header_content %}
 
-    {% endblock %}
+        {% endblock %}
+    </div>
+    <div class="container">
+        {% block main_content %}
 
-    {% block main_content %}
-
-    {% endblock %}
+        {% endblock %}
+    </div>
 </body>
+
 </html>
