@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
+<!-- 
+TODO: Cenetr the login button
+TODO: Change the title
+ -->
 
 {% block main_content %}
-<h1>Login or register to start get acces to yours tasks</h1>
+<div class="header-bar">
+    <h1>Login or register to start get acces to yours tasks</h1>
+</div>
 
-<form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Login">
-</form>
-<td><a href="{% url 'register' %}">Register</a></td>
+<div class="card-body">
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input class="button" type="submit" value="Login">
+    </form>
+    <p>Don't have an account?<a href="{% url 'register' %}">Register</a></p>
+</div>
 {% endblock %}

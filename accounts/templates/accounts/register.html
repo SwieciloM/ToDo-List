@@ -1,12 +1,25 @@
 {% extends 'base.html' %}
+<!-- 
+TODO: Change return to login button
+ -->
 
 {% block main_content %}
-<h1>Register</h1>
-<a href="{% url 'login' %}">Go back</a>
+<div class="header-bar">
+    <h1>Register</h1>
+</div>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Register">
-</form>
+<div class="card-body">
+    <form method="POST">
+        {% csrf_token %}
+        <label>{{form.username.label}}</label>
+        {{form.username}}
+        <label>{{form.password1.label}}</label>
+        {{form.password1}}
+        <label>{{form.password2.label}}</label>
+        {{form.password2}}
+        <!-- {{ form.as_p }} -->
+        <input style="margin-top:10px;" class="button" type="submit" value="Register">
+    </form>
+    <a href="{% url 'login' %}">Go back</a>
+</div>
 {% endblock %}

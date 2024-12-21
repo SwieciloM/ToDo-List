@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
+<!-- 
+TODO: Add a page title for example 'Tell something about your task'
+TODO: Create user-friendly date input field
+TODO: Add funny, example values in the input fields
+TODO: Centralize submit button 
+ -->
 
 {% block main_content %}
-<h3>Task Form</h3>
-<a href="{% url 'tasks' %}">Go back</a>
-<form method="POST" action="">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Submit">
-</form>
+<div class="header-bar">
+    <a href="{% url 'tasks' %}">&#8592; Back</a>
+</div>
+
+<div class="card-body">
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input class="button" type="submit" value="Submit">
+    </form>
+</div>
 {% endblock %}
