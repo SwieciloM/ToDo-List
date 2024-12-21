@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
 
-{% block header_content %}
+{% block main_content %}
 <h1>Register</h1>
 <a href="{% url 'login' %}">Go back</a>
-{% endblock %}
 
-{% block main_content %}
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
