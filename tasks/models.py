@@ -11,10 +11,10 @@ def validate_due_date(date):
 
 
 class Task(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)  # null and blank are temporary True
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
-    is_completed = models.BooleanField(default=False)  # TODO: hide it from user during creation of task 
+    is_completed = models.BooleanField(default=False)
     creation_date = models.DateTimeField(auto_now_add=True)
     due_date = models.DateTimeField(null=True, blank=True, validators=[validate_due_date])
 
