@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 <!-- 
+TODO: Change color theme to blue
 TODO: Enable changing task status by clicking on the icon
+TODO: Change the task status icon to more complicated circles
 TODO: Add changing info title like 'All task done :) Let's creat new ones!', 'You have x incomplete tasks'
-TODO: Change colour and localisation of crating new task button
-TODO: Show some task details while hovering over it  
+TODO: Make 'x' button bigger
+TODO: Show some task details while hovering over it
+TODO: Add searching field background text (symbol lupy)
+TODO: Show due to date next to the task delate icon ()
+TODO: Change the task background accordingly to the remaining time
  -->
 
 {% block main_content %}
@@ -19,12 +24,12 @@ TODO: Show some task details while hovering over it
 </div>
 
 <div id="search-add-wrapper">
+    <a class="button" href="{% url 'task-create' %}">+ Add new</a>
     <form method="GET" style="margin-top: 20px;display: flex;">
         <input type="text" name="search-area" value="{{search_input}}">
         <input class="button" type="submit" name="search" value="Search">
         <input class="button" type="submit" name="clear" value="Clear filter">
     </form>
-    <a id="add-link" href="{% url 'task-create' %}">&#x2b;</a>
 </div>
 
 <div class="task-items-wrapper">
