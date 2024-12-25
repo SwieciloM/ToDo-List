@@ -20,7 +20,7 @@ class Task(models.Model):
 
     class Meta:
         # Orders tasks by completion status (False first, then True)
-        ordering = ['is_completed']
+        ordering = ['-creation_date']
 
     def __str__(self):
         # Return task title as string representation

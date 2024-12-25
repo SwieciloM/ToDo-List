@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 <!-- 
 TODO: Change color theme to blue
-TODO: Enable changing task status by clicking on the icon
-TODO: Change the task status icon to more complicated circles
 TODO: Add changing info title like 'All task done :) Let's creat new ones!', 'You have x incomplete tasks'
 TODO: Make 'x' button bigger
 TODO: Show some task details while hovering over it
@@ -44,7 +42,7 @@ TODO: Change the task background accordingly to the remaining time
                                onChange="this.form.submit()"
                                {% if task.is_completed %} checked {% endif %}>
                     </form>
-                    <i><s><a href="{% url 'task-update' task.id %}">{{task}}</a></s></i>
+                    <s><a href="{% url 'task-update' task.id %}">{{task}}</a></s>
                 </div>
                 <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
             {% else %}
