@@ -19,7 +19,7 @@ TODO: Change the task background accordingly to the remaining time
     </div>
 
     {% if request.user.is_authenticated %}
-    <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'logout' %}">Logout</a>
     {% endif %}
 </div>
 
@@ -36,19 +36,30 @@ TODO: Change the task background accordingly to the remaining time
     {% for task in tasks %}
         <div class="task-wrapper">
             {% if task.is_completed %}
-            <div class="task-title">
-                <div class="task-complete-icon"></div>
-                <i><s><a href="{% url 'task-update' task.id %}">{{task}}</a></s></i>
-            </div>
-            <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+                <div class="task-title">
+                    <form method="POST" action="{% url 'task-toggle-status' task.id %}">
+                        {% csrf_token %}
+                        <input type="checkbox" 
+                               name="toggle"
+                               onChange="this.form.submit()"
+                               {% if task.is_completed %} checked {% endif %}>
+                    </form>
+                    <i><s><a href="{% url 'task-update' task.id %}">{{task}}</a></s></i>
+                </div>
+                <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
             {% else %}
-            <div class="task-title">
-                <div class="task-incomplete-icon"></div>
-                <a href="{% url 'task-update' task.id %}">{{task}}</a>
-            </div>
-            <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+                <div class="task-title">
+                    <form method="POST" action="{% url 'task-toggle-status' task.id %}">
+                        {% csrf_token %}
+                        <input type="checkbox" 
+                               name="toggle"
+                               onChange="this.form.submit()"
+                               {% if task.is_completed %} checked {% endif %}>
+                    </form>
+                    <a href="{% url 'task-update' task.id %}">{{task}}</a>
+                </div>
+                <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
             {% endif %}
-            
         </div>
     {% empty %}
         <h3>No items in list</h3>

@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -53,6 +54,14 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
     fields = ['title', 'description', 'is_completed', 'due_date']
     success_url = reverse_lazy('tasks')
     
+
+class TaskToggleStatusView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        task = get_object_or_404(Task, pk=pk, user=request.user)
+        task.is_completed = not task.is_completed
+        task.save()
+        return redirect('tasks')
+
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
