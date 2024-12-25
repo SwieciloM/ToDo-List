@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 <!-- 
 TODO: Change color theme to blue
-TODO: Add changing info title like 'All task done :) Let's creat new ones!', 'You have x incomplete tasks'
 TODO: Make 'x' button bigger
 TODO: Show some task details while hovering over it
 TODO: Add searching field background text (symbol lupy)
@@ -13,7 +12,15 @@ TODO: Change the task background accordingly to the remaining time
 <div class="header-bar">
     <div>
         <h1>Hello {{request.user|title}}</h1>
-        <h3 style="margin:0">You have <i>{{count}}</i> incomplete task{{ count|pluralize:"s" }}</h3>
+        <h3 style="margin:0">
+            {% if completed_count == 0 and incompleted_count == 0 %}
+                Your list is empty. Create new task and organize your day!
+            {% elif incompleted_count == 0 %}
+                All task done :3 Let's creat new ones!
+            {% else %}
+                You have <i>{{incompleted_count}}</i> incomplete task{{ incompleted_count|pluralize:"s" }}
+            {% endif %}
+        </h3>
     </div>
 
     {% if request.user.is_authenticated %}
