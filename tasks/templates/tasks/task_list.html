@@ -4,8 +4,7 @@ TODO: Change color theme to blue
 TODO: Make 'x' button bigger
 TODO: Show some task details while hovering over it
 TODO: Add searching field background text (symbol lupy)
-TODO: Show due to date next to the task delate icon ()
-TODO: Change the task background accordingly to the remaining time
+TODO: Align time counter to the left and enclouse it in the rounded rectangle with changing colour
  -->
 
 {% block main_content %}
@@ -51,6 +50,11 @@ TODO: Change the task background accordingly to the remaining time
                     </form>
                     <s><a href="{% url 'task-update' task.id %}">{{task}}</a></s>
                 </div>
+                {% if task.due_date %}
+                    <span class="time-counter">
+                        {{ task.due_date|timeuntil }} left
+                    </span>
+                {% endif %}
                 <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
             {% else %}
                 <div class="task-title">
@@ -63,6 +67,11 @@ TODO: Change the task background accordingly to the remaining time
                     </form>
                     <a href="{% url 'task-update' task.id %}">{{task}}</a>
                 </div>
+                {% if task.due_date %}
+                    <span class="time-counter">
+                        {{ task.due_date|timeuntil }} left
+                    </span>
+                {% endif %}
                 <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
             {% endif %}
         </div>
