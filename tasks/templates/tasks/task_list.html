@@ -3,8 +3,8 @@
 TODO: Change color theme to blue
 TODO: Make 'x' button bigger
 TODO: Show some task details while hovering over it
-TODO: Add searching field background text (symbol lupy)
 TODO: Align time counter to the left and enclouse it in the rounded rectangle with changing colour
+TODO: Change coursor to pointer while hovering over checkbox
  -->
 
 {% block main_content %}
@@ -30,7 +30,7 @@ TODO: Align time counter to the left and enclouse it in the rounded rectangle wi
 <div id="search-add-wrapper">
     <a class="button" href="{% url 'task-create' %}">+ Add new</a>
     <form method="GET" style="margin-top: 20px;display: flex;">
-        <input type="text" name="search-area" value="{{search_input}}">
+        <input type="text" name="search-area" value="{{search_input}}" placeholder="Type a task title...">
         <input class="button" type="submit" name="search" value="Search">
         <input class="button" type="submit" name="clear" value="Clear filter">
     </form>
