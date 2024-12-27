@@ -4,7 +4,6 @@ TODO: Change color theme to blue
 TODO: Make 'x' button bigger
 TODO: Show some task details while hovering over it
 TODO: Align time counter to the left and enclouse it in the rounded rectangle with changing colour
-TODO: Change coursor to pointer while hovering over checkbox
  -->
 
 {% block main_content %}
@@ -13,9 +12,9 @@ TODO: Change coursor to pointer while hovering over checkbox
         <h1>Hello {{request.user|title}}</h1>
         <h3 style="margin:0">
             {% if completed_count == 0 and incompleted_count == 0 %}
-                Your list is empty. Create new task and organize your day!
+                Create new task and organize your day!
             {% elif incompleted_count == 0 %}
-                All task done :3 Let's creat new ones!
+                All task done &#x1F973; Let's creat new ones!
             {% else %}
                 You have <i>{{incompleted_count}}</i> incomplete task{{ incompleted_count|pluralize:"s" }}
             {% endif %}
