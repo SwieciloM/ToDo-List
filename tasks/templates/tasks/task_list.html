@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
 <!-- 
-TODO: Change color theme to blue
-TODO: Make 'x' button bigger
 TODO: Show some task details while hovering over it
-TODO: Align time counter to the left and enclouse it in the rounded rectangle with changing colour
  -->
 
 {% block main_content %}
@@ -27,8 +24,8 @@ TODO: Align time counter to the left and enclouse it in the rounded rectangle wi
 </div>
 
 <div id="search-add-wrapper">
-    <a class="button" href="{% url 'task-create' %}">+ Add new</a>
-    <form method="GET" style="margin-top: 20px;display: flex;">
+    <a class="button" href="{% url 'task-create' %}">Add new</a>
+    <form method="GET" style="display: flex;">
         <input type="text" name="search-area" value="{{search_input}}" placeholder="Type a task title...">
         <input class="button" type="submit" name="search" value="Search">
         <input class="button" type="submit" name="clear" value="Clear filter">
@@ -49,12 +46,17 @@ TODO: Align time counter to the left and enclouse it in the rounded rectangle wi
                     </form>
                     <s><a href="{% url 'task-update' task.id %}">{{task}}</a></s>
                 </div>
-                {% if task.due_date %}
-                    <span class="time-counter">
-                        {{ task.due_date|timeuntil }} left
-                    </span>
-                {% endif %}
-                <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+                <div class="task-right-group">
+                    {% if task.due_date %}
+                        <span class="time-counter 
+                            {% if task.hours_left < 24 %} soon 
+                            {% elif task.hours_left < 72 %} medium 
+                            {% else %} far {% endif %}">
+                            {{ task.due_date|timeuntil }} left
+                        </span>
+                    {% endif %}
+                    <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+                </div>
             {% else %}
                 <div class="task-title">
                     <form method="POST" action="{% url 'task-toggle-status' task.id %}">
@@ -66,16 +68,22 @@ TODO: Align time counter to the left and enclouse it in the rounded rectangle wi
                     </form>
                     <a href="{% url 'task-update' task.id %}">{{task}}</a>
                 </div>
-                {% if task.due_date %}
-                    <span class="time-counter">
-                        {{ task.due_date|timeuntil }} left
-                    </span>
-                {% endif %}
-                <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+                <div class="task-right-group">
+                    {% if task.due_date %}
+                        <span class="time-counter 
+                            {% if task.hours_left < 0 %} overdue 
+                            {% elif task.hours_left < 24 %} soon 
+                            {% elif task.hours_left < 168 %} medium 
+                            {% else %} far {% endif %}">
+                            {{ task.due_date|timeuntil }} left
+                        </span>
+                    {% endif %}
+                    <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+                </div>
             {% endif %}
         </div>
     {% empty %}
-        <h3>No items in list</h3>
+        <h3 style="text-align: center">Your list is empty... &#128532;</h3>
     {% endfor %}    
 </div>
 {% endblock %}

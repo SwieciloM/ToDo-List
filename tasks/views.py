@@ -5,6 +5,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils import timezone
 from .models import Task
 
 
@@ -17,6 +18,13 @@ class TaskListView(LoginRequiredMixin, ListView):
         context['tasks'] = context['tasks'].filter(user=self.request.user)
         context['incompleted_count'] = context['tasks'].filter(is_completed=False).count()
         context['completed_count'] = context['tasks'].filter(is_completed=True).count()
+
+        current_time = timezone.now()
+        for task in context['tasks']:
+            if task.due_date:
+                task.hours_left = (task.due_date - current_time).total_seconds() / 3600
+            else:
+                task.hours_left = None
 
         # Check which button was pressed
         if 'clear' in self.request.GET:

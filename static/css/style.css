@@ -18,10 +18,11 @@ body {
     padding-top: 50px;
 }
 
-.container{
+.container {
     max-width: 550px;
     margin: auto;
     background-color: #fff;
+    border-radius: 0 0 5px 5px;
     -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
     box-shadow: 2px 2px 13px -4px rgb(0, 0, 0, 0.21);
 }
@@ -32,7 +33,7 @@ body {
     color: #fff;
     padding: 10px;
     border-radius: 5px 5px 0 0;
-    background: linear-gradient(90deg, #eea390, #eb796f 43%, #eb796f 100%);
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
 }
 
 .header-bar a {
@@ -40,13 +41,24 @@ body {
     text-decoration: none;
 }
 
+.task-items-wrapper {
+    padding: 10px;
+}
+
 .task-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 12px;
     background-color: #fff;
-    border-top: 1px solid rgb(226, 226, 226); 
+    border: 2px solid #e2e2e2;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.task-right-group {
+    display: flex;  
+    align-items: center;  
 }
 
 .task-title {
@@ -63,7 +75,7 @@ body {
     text-decoration: none;
     font-weight: 900;
     color: #cf4949;
-    font-size: 22px;
+    font-size: 26px;
     line-height: 0;
 }
 
@@ -75,10 +87,10 @@ body {
 }
 
 #add-link {
-    color: #eb796f;
+    color: #3a7bd5;
     text-decoration: none;
     font-size: 42px;
-    text-shadow: 1px 1px #81413b;
+    text-shadow: 1px 1px #3b5581;
 }
 
 input[type=checkbox]:hover {
@@ -88,9 +100,9 @@ input[type=checkbox]:hover {
 input[type=text],
 input[type=password],
 textarea {
-    border: 1px solid #eb796f;
+    border: 2px solid #3a7bd5;
     border-radius: 5px;
-    padding: 10px;
+    padding: 8px 12px;
     width: 90%;
 }
 
@@ -100,20 +112,51 @@ label {
 }
 
 .button {
-    border: 1px solid #eb796f;
+    border: 2px solid #3a7bd5;
     background-color: #fafafa;
-    color: #eb796f;
-    padding: 10px;
+    color: #3a7bd5;
+    padding: 8px 12px;
     font-size: 14px;
+    font-weight: 590;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
+    transition: filter 0.2s, opacity 0.2s;
 }
 
 .button:hover {
-    background-color: #dcdcdc;
+    background-color: #3a7bd5;
+    color: #ffffff;
 }
 
 .card-body {
     padding: 20px;
+}
+
+.time-counter {
+    border: 1px solid #4b5156;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 12px;
+    padding: 4px 8px;
+    font-size: 0.85rem;
+    margin-right: 10px;
+    color: #4b5156;
+    background-color: #ffffff;
+}
+
+.time-counter.overdue {
+    background-color: #ff7b74; 
+}
+
+.time-counter.soon {
+    background-color: #ffb957;
+}
+
+.time-counter.medium {
+    background-color: #fdfd96; 
+}
+
+.time-counter.far {
+    background-color: #77dd77;
 }
