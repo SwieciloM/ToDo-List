@@ -1,7 +1,4 @@
 {% extends 'base.html' %}
-<!-- 
-TODO: Centralize submit button 
- -->
 
 {% block main_content %}
 <div class="centered-header-bar">
@@ -44,7 +41,10 @@ TODO: Centralize submit button
                 <div class="error">&#8226; {{ error }}</div>
             {% endfor %}
         </div>
-        <input class="button" type="submit" value="Submit">
+
+        <div class="centered-button">
+            <input class="button" type="submit" value="Submit">
+        </div>
     </form>
 </div>
 {% endblock %}

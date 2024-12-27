@@ -73,16 +73,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px;
+    padding: 8px;
     background-color: #fff;
     border: 2px solid #e2e2e2;
     border-radius: 8px;
     margin-bottom: 10px;
+    min-height: 28px;
 }
 
 .task-right-group {
     display: flex;  
-    align-items: center;  
+    align-items: center;
+    gap: 10px;
 }
 
 .task-title {
@@ -143,6 +145,7 @@ input[type="datetime-local"] {
     border: 2px solid #3a7bd5;
     border-radius: 5px;
     padding: 8px 12px;
+    width: 95%;
 }
 
 ::placeholder {
@@ -179,15 +182,14 @@ label {
 }
 
 .time-counter {
-    border: 1px solid #4b5156;
-    display: inline-block;
-    text-decoration: none;
-    border-radius: 12px;
+    display: inline-flex;
     padding: 4px 8px;
+    border: 1px solid #4b5156;
+    border-radius: 12px;
     font-size: 0.85rem;
-    margin-right: 10px;
     color: #4b5156;
     background-color: #ffffff;
+    white-space: nowrap;
 }
 
 .time-counter.overdue {
@@ -225,4 +227,9 @@ label {
     display: block;
     font-size: 0.8rem;
     color: #666;
+}
+
+.centered-button {
+    text-align: center;
+    margin-top: 20px; 
 }
