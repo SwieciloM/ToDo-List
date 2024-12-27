@@ -1,7 +1,4 @@
 {% extends 'base.html' %}
-<!-- 
-TODO: Show some task details while hovering over it
- -->
 
 {% block main_content %}
 <div class="header-bar">
@@ -35,52 +32,32 @@ TODO: Show some task details while hovering over it
 <div class="task-items-wrapper">
     {% for task in tasks %}
         <div class="task-wrapper">
-            {% if task.is_completed %}
-                <div class="task-title">
-                    <form method="POST" action="{% url 'task-toggle-status' task.id %}">
-                        {% csrf_token %}
-                        <input type="checkbox" 
-                               name="toggle"
-                               onChange="this.form.submit()"
-                               {% if task.is_completed %} checked {% endif %}>
-                    </form>
+            <div class="task-title">
+                <form method="POST" action="{% url 'task-toggle-status' task.id %}">
+                    {% csrf_token %}
+                    <input type="checkbox" 
+                            name="toggle"
+                            onChange="this.form.submit()"
+                            {% if task.is_completed %} checked {% endif %}>
+                </form>
+                {% if task.is_completed %}
                     <s><a href="{% url 'task-update' task.id %}">{{task}}</a></s>
-                </div>
-                <div class="task-right-group">
-                    {% if task.due_date %}
-                        <span class="time-counter 
-                            {% if task.hours_left < 24 %} soon 
-                            {% elif task.hours_left < 72 %} medium 
-                            {% else %} far {% endif %}">
-                            {{ task.due_date|timeuntil }} left
-                        </span>
-                    {% endif %}
-                    <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
-                </div>
-            {% else %}
-                <div class="task-title">
-                    <form method="POST" action="{% url 'task-toggle-status' task.id %}">
-                        {% csrf_token %}
-                        <input type="checkbox" 
-                               name="toggle"
-                               onChange="this.form.submit()"
-                               {% if task.is_completed %} checked {% endif %}>
-                    </form>
+                {% else %}
                     <a href="{% url 'task-update' task.id %}">{{task}}</a>
-                </div>
-                <div class="task-right-group">
-                    {% if task.due_date %}
-                        <span class="time-counter 
-                            {% if task.hours_left < 0 %} overdue 
-                            {% elif task.hours_left < 24 %} soon 
-                            {% elif task.hours_left < 168 %} medium 
-                            {% else %} far {% endif %}">
-                            {{ task.due_date|timeuntil }} left
-                        </span>
-                    {% endif %}
-                    <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
-                </div>
-            {% endif %}
+                {% endif %}
+            </div>
+            <div class="task-right-group">
+                {% if task.due_date %}
+                    <span class="time-counter 
+                        {% if task.hours_left < 0 %} overdue 
+                        {% elif task.hours_left < 24 %} soon 
+                        {% elif task.hours_left < 168 %} medium 
+                        {% else %} far {% endif %}">
+                        {{ task.due_date|timeuntil }} left
+                    </span>
+                {% endif %}
+                <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+            </div>
         </div>
     {% empty %}
         <h3 style="text-align: center">Your list is empty... &#128532;</h3>
