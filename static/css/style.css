@@ -38,8 +38,31 @@ body {
 }
 
 .header-bar a {
-    color: rgb(247, 247, 247);
+    color: #fff;
     text-decoration: none;
+}
+
+.centered-header-bar {
+    position: relative;
+    height: 40px;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+}
+
+.centered-header-bar a {
+    position: absolute;
+    color: #fff;
+    text-decoration: none;
+}
+
+.centered-header-bar h3 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 25px;
+    margin: 0;  
 }
 
 .task-items-wrapper {
@@ -67,6 +90,11 @@ body {
 }
 
 .task-title a {
+    max-width: 15em;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-decoration: none;
     color: #4b5156;
     margin-left: 10px;
@@ -104,7 +132,7 @@ textarea {
     border: 2px solid #3a7bd5;
     border-radius: 5px;
     padding: 8px 12px;
-    width: 90%;
+    width: 95%;
 }
 
 label {
@@ -131,7 +159,7 @@ label {
 }
 
 .card-body {
-    padding: 20px;
+    padding: 10px;
 }
 
 .time-counter {

@@ -21,7 +21,7 @@
 
 <div id="search-add-wrapper">
     <a class="button" href="{% url 'task-create' %}">Add new</a>
-    <form method="GET" style="display: flex;">
+    <form method="GET" style="display: flex">
         <input type="text" name="search-area" value="{{search_input}}" placeholder="Type a task title...">
         <input class="button" type="submit" name="search" value="Search">
         <input class="button" type="submit" name="clear" value="Clear filter">
