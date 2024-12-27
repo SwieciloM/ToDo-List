@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 <!-- 
-TODO: Create user-friendly date input field
-TODO: Add funny, example values in the input fields
 TODO: Centralize submit button 
  -->
 
@@ -14,7 +12,38 @@ TODO: Centralize submit button
 <div class="card-body">
     <form method="POST" action="">
         {% csrf_token %}
-        {{form.as_p}}
+        <div class="form-group">
+            <label>Title:</label>
+            {{ form.title }}
+            {% if form.title.help_text %}
+                <small>{{ form.title.help_text }}</small>
+            {% endif %}
+            {% for error in form.title.errors %}
+                <div class="error">&#8226; {{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label>Description:</label>
+            {{ form.description }}
+            {% if form.description.help_text %}
+                <small>{{ form.description.help_text }}</small>
+            {% endif %}
+            {% for error in form.description.errors %}
+                <div class="error">&#8226; {{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label>Due date:</label>
+            {{ form.due_date }}
+            {% if form.due_date.help_text %}
+                <small>{{ form.due_date.help_text }}</small>
+            {% endif %}
+            {% for error in form.due_date.errors %}
+                <div class="error">&#8226; {{ error }}</div>
+            {% endfor %}
+        </div>
         <input class="button" type="submit" value="Submit">
     </form>
 </div>

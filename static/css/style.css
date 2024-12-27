@@ -129,10 +129,26 @@ input[type=checkbox]:hover {
 input[type=text],
 input[type=password],
 textarea {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
     border: 2px solid #3a7bd5;
     border-radius: 5px;
     padding: 8px 12px;
     width: 95%;
+}
+
+input[type="datetime-local"] {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    border: 2px solid #3a7bd5;
+    border-radius: 5px;
+    padding: 8px 12px;
+}
+
+::placeholder {
+    font-family: inherit;
+    font-size: 0.9rem; 
+    color: #999999;  
 }
 
 label {
@@ -188,4 +204,25 @@ label {
 
 .time-counter.far {
     background-color: #77dd77;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.form-group .error {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: 3px;
+}
+
+.form-group small {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
 }

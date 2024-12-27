@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
+from .forms import TaskCreateForm
 from .models import Task
 
 
@@ -43,7 +44,7 @@ class TaskListView(LoginRequiredMixin, ListView):
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['title', 'description', 'due_date']
+    form_class = TaskCreateForm
     success_url = reverse_lazy('tasks')
 
     def form_valid(self, form):
