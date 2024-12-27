@@ -81,6 +81,10 @@ body {
     text-shadow: 1px 1px #81413b;
 }
 
+input[type=checkbox]:hover {
+    cursor: pointer;
+}
+
 input[type=text],
 input[type=password],
 textarea {
@@ -111,5 +115,5 @@ label {
 }
 
 .card-body {
-    padding: 20px
+    padding: 20px;
 }
