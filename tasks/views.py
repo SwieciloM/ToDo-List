@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -40,12 +39,6 @@ class TaskListView(LoginRequiredMixin, ListView):
         context['search_input'] = search_input
 
         return context
-
-
-class TaskDetailView(LoginRequiredMixin, DetailView):
-    model = Task
-    context_object_name = 'task'
-    template_name = 'tasks/task.html'
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
