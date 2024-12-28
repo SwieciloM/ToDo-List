@@ -233,3 +233,17 @@ label {
     text-align: center;
     margin-top: 20px; 
 }
+
+.delete-message {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.delete-task-name {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #cf4949;
+    margin-bottom: 25px;
+    text-align: center;
+}
