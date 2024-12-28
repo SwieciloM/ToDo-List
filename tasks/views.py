@@ -5,7 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
-from .forms import TaskCreateForm
+from .forms import TaskCreateForm, TaskUpdateForm
 from .models import Task
 
 
@@ -50,12 +50,22 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(TaskCreateView, self).form_valid(form)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_type'] = 'create'
+        return context
 
 
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ['title', 'description', 'is_completed', 'due_date']
+    form_class = TaskUpdateForm
     success_url = reverse_lazy('tasks')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_type'] = 'update'
+        return context
     
 
 class TaskToggleStatusView(LoginRequiredMixin, View):

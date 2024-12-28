@@ -15,3 +15,9 @@ class TaskCreateForm(forms.ModelForm):
                 'type': 'datetime-local',
             }),
         }
+
+class TaskUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['title', 'description', 'is_completed', 'due_date']
+        widgets = {'description': forms.Textarea(attrs={'rows': 5})}

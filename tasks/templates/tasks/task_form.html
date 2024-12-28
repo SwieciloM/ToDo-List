@@ -3,7 +3,13 @@
 {% block main_content %}
 <div class="centered-header-bar">
     <a href="{% url 'tasks' %}">&#129028; Go back</a>
-    <h3>Create new task</h3>
+    <h3>
+        {% if form_type == 'create' %}
+            Create a new task
+        {% else %}
+            Edit an existing task
+        {% endif %}
+    </h3>
 </div>
 
 <div class="card-body">
@@ -30,6 +36,16 @@
                 <div class="error">&#8226; {{ error }}</div>
             {% endfor %}
         </div>
+
+        {% if form_type == 'update' %}
+            <div class="form-group">
+                <label>Status:</label>
+                {{ form.is_completed }}
+                {% for error in form.is_completed.errors %}
+                    <div class="error">&#8226; {{ error }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
 
         <div class="form-group">
             <label>Due date:</label>
