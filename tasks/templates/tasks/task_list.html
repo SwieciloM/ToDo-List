@@ -3,7 +3,7 @@
 {% block main_content %}
 <div class="header-bar">
     <div>
-        <h1>Hello {{request.user|title}}</h1>
+        <h1>Welcome {{request.user|title}}!</h1>
         <h3 style="margin:0">
             {% if completed_count == 0 and incompleted_count == 0 %}
                 Create new task and organize your day!
