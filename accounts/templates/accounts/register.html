@@ -1,25 +1,50 @@
 {% extends 'base.html' %}
-<!-- 
-TODO: Change return to login button
- -->
 
 {% block main_content %}
-<div class="header-bar">
-    <h1>Register</h1>
+<div class="centered-header-bar">
+    <a href="{% url 'login' %}">&#129028; Log in</a>
+    <h3>Create new account</h3>
 </div>
 
 <div class="card-body">
     <form method="POST">
         {% csrf_token %}
-        <label>{{form.username.label}}</label>
-        {{form.username}}
-        <label>{{form.password1.label}}</label>
-        {{form.password1}}
-        <label>{{form.password2.label}}</label>
-        {{form.password2}}
-        <!-- {{ form.as_p }} -->
-        <input style="margin-top:10px;" class="button" type="submit" value="Register">
+        <div class="form-group">
+            <label>Username:</label>
+            {{ form.username }}
+            {% if form.username.help_text %}
+                <small>{{ form.username.help_text }}</small>
+            {% endif %}
+            {% for error in form.username.errors %}
+                <div class="error">&#8226; {{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label>Password:</label>
+            {{ form.password1 }}
+            {% if form.password1.help_text %}
+                <small>{{ form.password1.help_text }}</small>
+            {% endif %}
+            {% for error in form.password1.errors %}
+                <div class="error">&#8226; {{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label>Password confirmation:</label>
+            {{ form.password2 }}
+            {% if form.password2.help_text %}
+                <small>{{ form.password2.help_text }}</small>
+            {% endif %}
+            {% for error in form.password2.errors %}
+                <div class="error">&#8226; {{ error }}</div>
+            {% endfor %}
+        </div>
+        
+        <div class="centered-button">
+            <input class="button" type="submit" value="Register">
+        </div>
     </form>
-    <a href="{% url 'login' %}">Go back</a>
 </div>
 {% endblock %}
