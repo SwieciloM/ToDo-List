@@ -2,6 +2,10 @@
 
 The ToDo-List is a web-based application designed to help users efficiently manage their daily tasks. One of the main functionalities is the user management system (through login, registration and secure sessions), which allows each registered user to have a private task list. Once successfully logged in, user can view their list, add new tasks to it (by providing title, description or due date) and delete tasks they no longer need. The app also allows users to update the status of tasks, marking them as completed or pending, as well as changing task details completely. Additionally, the ToDo-List includes a search feature, enabling users to filter tasks by keywords, making it easy to locate specific item even in large lists. With its straightforward and user-friendly design, this project offers a comprehensive set of tools to efficiently manage tasks and enhance personal productivity.
 
+<div align="center">
+    <img src="https://github.com/user-attachments/assets/c251b202-82c5-44c7-bf11-70b62f6f7b7d" width="640" height="360" />
+</div>
+
 ## Features
 
 - User authentication with register and log in pages
@@ -46,6 +50,10 @@ The ToDo-List is a web-based application designed to help users efficiently mana
 2. Create new task with title and optional description, due date
 3. Update task or mark it as completed
 4. Delete task that is no longer needed
+
+<div align="center">
+    <img src="https://github.com/user-attachments/assets/cadd4443-36c2-41aa-aa90-e1eb6eefb269" width="350" height="325" />
+</div>
 
 ## License
 
