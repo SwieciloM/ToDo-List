@@ -34,7 +34,7 @@ The ToDo-List is a web-based application designed to help users efficiently mana
     ```bash
     pip install -r requirements.txt
     ```
-4. Apply migrations to set up the database (optional)
+4. Apply migrations to set up the database
     ```bash
     python manage.py migrate
     ```
