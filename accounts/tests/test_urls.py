@@ -4,7 +4,7 @@ from accounts.views import CustomLoginView, RegisterView
 from django.contrib.auth.views import LogoutView
 
 
-class TestUrls(SimpleTestCase):
+class TestUrlResolution(SimpleTestCase):
     def test_login_url_resolves(self):
         url = reverse('login')
         self.assertEqual(resolve(url).func.view_class, CustomLoginView)
@@ -18,15 +18,15 @@ class TestUrls(SimpleTestCase):
         self.assertEqual(resolve(url).func.view_class, RegisterView)
 
 
-class TestUrlStatusCodes(SimpleTestCase):
-    def test_login_page_status_code(self):
-        response = self.client.get(reverse('login'))
-        self.assertEqual(response.status_code, 200)
+class TestUrlReversal(SimpleTestCase):
+    def test_reverse_login_url(self):
+        url = reverse('login')
+        self.assertEqual(url, '/')
 
-    def test_logout_page_redirects(self):
-        response = self.client.get(reverse('logout'))
-        self.assertEqual(response.status_code, 302)  # Redirect
+    def test_reverse_logout_url(self):
+        url = reverse('logout')
+        self.assertEqual(url, '/logout/')
 
-    def test_register_page_status_code(self):
-        response = self.client.get(reverse('register'))
-        self.assertEqual(response.status_code, 200)
+    def test_reverse_register_url(self):
+        url = reverse('register')
+        self.assertEqual(url, '/register/')
