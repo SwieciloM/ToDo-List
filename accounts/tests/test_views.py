@@ -23,7 +23,7 @@ class TestCustomLoginView(TestCase):
         response = self.client.post(self.login_url, {'username': 'testuser', 'password': 'password123'})
         self.assertRedirects(response, self.tasks_url)
 
-    def test_failed_login_renders_login_page(self):
+    def test_failed_login_renders_errors(self):
         response = self.client.post(self.login_url, {'username': 'testuser', 'password': 'wrongpassword'})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'accounts/login.html')
@@ -46,7 +46,7 @@ class TestRegisterView(TestCase):
         response = self.client.get(self.register_url)
         self.assertRedirects(response, self.tasks_url)
 
-    def test_successful_registration_creates_user_and_redirects(self):
+    def test_successful_registration_creates_user_and_redirects_to_tasks(self):
         response = self.client.post(self.register_url, {
             'username': 'newuser',
             'password1': 'strongpassword123',
@@ -55,7 +55,7 @@ class TestRegisterView(TestCase):
         self.assertRedirects(response, self.tasks_url)
         self.assertTrue(User.objects.filter(username='newuser').exists())
 
-    def test_failed_registration_renders_form_with_errors(self):
+    def test_failed_registration_renders_errors(self):
         response = self.client.post(self.register_url, {
             'username': 'newuser',
             'password1': 'password123',
