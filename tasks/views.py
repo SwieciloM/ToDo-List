@@ -62,6 +62,10 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
     form_class = TaskUpdateForm
     success_url = reverse_lazy('tasks')
 
+    def get_queryset(self):
+        """Only return tasks owned by the current user."""
+        return Task.objects.filter(user=self.request.user)
+
     def get_context_data(self, **kwargs):
         """Adds a form type identifier for the template."""
         context = super().get_context_data(**kwargs)
@@ -83,3 +87,7 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     context_object_name = 'task'
     success_url = reverse_lazy('tasks')
+
+    def get_queryset(self):
+        """Only return tasks owned by the current user."""
+        return Task.objects.filter(user=self.request.user)
