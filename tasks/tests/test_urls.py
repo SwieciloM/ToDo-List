@@ -1,4 +1,4 @@
-from django.test import SimpleTestCase, TestCase
+from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 from tasks.views import TaskListView, TaskCreateView, TaskUpdateView, TaskToggleStatusView, TaskDeleteView
 
