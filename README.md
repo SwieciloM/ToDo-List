@@ -1,5 +1,11 @@
 <h1 align="center">ToDo List <img src="https://github.com/user-attachments/assets/b810adbb-ec82-47a5-93e7-e96d064f284c" alt="ToDo list icon" width="24" height="24"></h1>
 
+[![Build Status](https://github.com/SwieciloM/ToDo-List/actions/workflows/django.yml/badge.svg)](https://github.com/SwieciloM/ToDo-List/actions/workflows/django.yml)
+[![Coverage Status](https://coveralls.io/repos/github/SwieciloM/ToDo-List/badge.svg)](https://coveralls.io/github/SwieciloM/ToDo-List)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/PROJECT_TOKEN)](https://www.codacy.com/gh/SwieciloM/ToDo-List/dashboard)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python Version](https://img.shields.io/badge/python-3.8%2C%203.9%2C%203.10-blue.svg)](https://www.python.org/downloads/)
+
 The ToDo-List is a web-based application designed to help users efficiently manage their daily tasks. One of the main functionalities is the user management system (through login, registration and secure sessions), which allows each registered user to have a private task list. Once successfully logged in, user can view their list, add new tasks to it (by providing title, description or due date) and delete tasks they no longer need. The app also allows users to update the status of tasks, marking them as completed or pending, as well as changing task details completely. Additionally, the ToDo-List includes a search feature, enabling users to filter tasks by keywords, making it easy to locate specific item even in large lists. With its straightforward and user-friendly design, this project offers a comprehensive set of tools to efficiently manage tasks and enhance personal productivity.
 
 <div align="center">
