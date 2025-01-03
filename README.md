@@ -1,5 +1,5 @@
 <h1 align="center">ToDo List <img src="https://github.com/user-attachments/assets/b810adbb-ec82-47a5-93e7-e96d064f284c" alt="ToDo list icon" width="24" height="24"></h1>
-
+test
 [![Build Status](https://github.com/SwieciloM/ToDo-List/actions/workflows/django.yml/badge.svg)](https://github.com/SwieciloM/ToDo-List/actions/workflows/django.yml)
 [![Coverage Status](https://coveralls.io/repos/github/SwieciloM/ToDo-List/badge.svg)](https://coveralls.io/github/SwieciloM/ToDo-List)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/PROJECT_TOKEN)](https://www.codacy.com/gh/SwieciloM/ToDo-List/dashboard)
