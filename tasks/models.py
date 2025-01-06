@@ -14,7 +14,7 @@ class Task(models.Model):
     """Model representing a task associated with a user."""
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
-    description = models.TextField(null=True, blank=True)
+    description = models.TextField(max_length=1000, null=True, blank=True)
     is_completed = models.BooleanField(default=False)
     creation_date = models.DateTimeField(auto_now_add=True)
     due_date = models.DateTimeField(null=True, blank=True, validators=[validate_due_date])
