@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserCreationForm
 from django.views.generic.edit import FormView
 from django.contrib.auth import login
 from django.shortcuts import redirect
@@ -21,7 +21,7 @@ class CustomLoginView(LoginView):
 class RegisterView(FormView):
     """Handles user registration and automatic login."""
     template_name = 'accounts/register.html'
-    form_class = UserCreationForm
+    form_class = CustomUserCreationForm
     success_url = reverse_lazy('tasks')
 
     def form_valid(self, form):
