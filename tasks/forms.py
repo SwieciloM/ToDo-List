@@ -29,6 +29,9 @@ class TaskUpdateForm(forms.ModelForm):
         model = Task
         fields = ['title', 'description', 'is_completed', 'due_date']
         widgets = {
+            'title': forms.TextInput(attrs={
+                'placeholder': "This field cannot be empty"
+            }),
             'description': forms.Textarea(attrs={
                 'rows': 5,
                 'placeholder': "No description provided"
