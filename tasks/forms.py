@@ -10,11 +10,11 @@ class TaskCreateForm(forms.ModelForm):
         fields = ['title', 'description', 'due_date']
         widgets = {
             'title': forms.TextInput(attrs={
-                'placeholder': "e.g. Return the book to the library"
+                'placeholder': "e.g. Read a book"
             }),
             'description': forms.Textarea(attrs={
                 'rows': 5,
-                'placeholder': "e.g. If I don't make it on time, I will get a fine"
+                'placeholder': "e.g. Finish reading 'Atomic Habits' by the end of the week"
             }),
             'due_date': forms.DateTimeInput(attrs={
                 'type': 'datetime-local'
@@ -30,6 +30,10 @@ class TaskUpdateForm(forms.ModelForm):
         fields = ['title', 'description', 'is_completed', 'due_date']
         widgets = {
             'description': forms.Textarea(attrs={
-                'rows': 5
+                'rows': 5,
+                'placeholder': "No description provided"
+            }), 
+            'due_date': forms.DateTimeInput(attrs={
+                'type': 'datetime-local'
             }), 
         }
